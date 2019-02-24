@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/browse"
+            android:title="ABC News" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/browse"
+            android:title="AL JAZEERA EN" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/browse"
+            android:title="AUSTRALLIAN FINANCIAL RE" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/browse"
+            android:title="BBC News" />
+
+        <item
+            android:id="@+id/cnnID"
+            android:icon="@drawable/browse"
+            android:title="CNN"></item>
+
+        <item
+            android:id="@+id/cryptoID"
+            android:icon="@drawable/browse"
+            android:title="Crypto Coins News"></item>
+        <item
+            android:id="@+id/dailymailID"
+            android:icon="@drawable/browse"
+            android:title="Daily Mail"></item>
+        <item
+            android:id="@+id/espnID"
+            android:icon="@drawable/browse"
+            android:title="ESPN"></item>
+        <item
+            android:id="@+id/foxID"
+            android:icon="@drawable/browse"
+            android:title="FOX News"></item>
+        <item
+            android:id="@+id/gurdianID"
+            android:icon="@drawable/browse"
+            android:title="The Gurdian UK"></item>
+
+       <item
+           android:icon="@drawable/browse"
+           android:title="New York Magazine"
+           android:id="@+id/newMagineID"
+           ></item>
+        <item
+            android:id="@+id/neyworktimeID"
+            android:icon="@drawable/browse"
+            android:title="The New York Times"></item>
+        <item
+            android:id="@+id/wallStreet"
+            android:icon="@drawable/browse"
+            android:title="The Wall Street Journal"></item>
+        <item
+            android:id="@+id/wasintonPost"
+            android:icon="@drawable/browse"
+            android:title="The Washington Post"></item>
+        <item
+            android:id="@+id/usaToday"
+            android:icon="@drawable/browse"
+            android:title="Usa Today"></item>
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+
+
+           <!-- <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />-->
+        </menu>
+    </item>
+
+</menu>

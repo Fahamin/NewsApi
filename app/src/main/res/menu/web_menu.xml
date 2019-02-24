@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/reload"
+        android:icon="@android:drawable/ic_menu_rotate"
+        android:title="Relaod"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/goBack"
+        android:icon="@drawable/ic_cback"
+        android:title="Back"
+        app:showAsAction="always">
+
+    </item>
+    <item
+        android:id="@+id/goForward"
+        android:title="Forward"
+        android:icon="@drawable/ic_forwrd"
+        app:showAsAction="always">
+    </item>
+
+    <item
+        android:id="@+id/share"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="SHARE"
+        app:showAsAction="always"></item>
+    <item
+        android:id="@+id/rate"
+        android:title="Rating"></item>
+
+    <item
+        android:id="@+id/moreapp"
+        android:title="More APP"></item>
+    <item
+        android:id="@+id/exit"
+        android:title="EXIT"></item>
+</menu>

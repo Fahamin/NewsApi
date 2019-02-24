@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Us News Live</string>
+
+    <string name="header_text">NewsViews</string>
+    <string name="sample">Sample</string>
+    <string name="newsviews">NewsViews</string>
+    <string name="text_third_page">This app provide you various news in the world
+        from different top level online website.</string>
+    <string name="welcome">Welcome To NewsViews</string>
+    <string name="about">Now you can read all top news in the world just in one click.</string>
+    <string name="date_time">10-12-2018 "  "T12:10:21</string>
+    <string name="view_more">Read More</string>
+    <string name="title_activity_details">US News Live</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">International News</string>
+    <string name="nav_header_subtitle">Top Live News of high ranked Newspaper</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+</resources>
