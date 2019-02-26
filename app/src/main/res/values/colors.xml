@@ -19,4 +19,10 @@
     <color name="white_color">#ffffff</color>
     <color name="welcome_page_1">#03DAC6</color>
     <color name="welcome_page_2">#018786</color>
+
+
+    <color name="Wheat">#5dff40</color>
+    <color name="back">#c10f97</color>
+    <color name="Wheat2">#e77d04</color>
+    <color name="back2">#06F3A8</color>
 </resources>

@@ -24,6 +24,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import app.cave.newsapi.R;
 
 public class web extends AppCompatActivity {
@@ -33,6 +37,7 @@ public class web extends AppCompatActivity {
     SwipeRefreshLayout refreshLayout;
     private Activity mActivity;
     private ProgressDialog progressDialog;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +45,12 @@ public class web extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_web);
 
-    /*    adView = findViewById(R.id.adView);
-        adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-        MobileAds.initialize(getApplicationContext(), getString(R.string.interstitial_full_screen1));
-   */
+        MobileAds.initialize(this, getString(R.string.appID));
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        
         string = getIntent().getStringExtra("url");
 
        /* CountDownTimer c = new CountDownTimer(2000, 0) {
@@ -182,12 +188,12 @@ public class web extends AppCompatActivity {
                 Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Install now");
-                String app_url = "";
+                String app_url = "https://play.google.com/store/apps/details?id=app.cave.newsapi";
                 shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, app_url);
                 startActivity(Intent.createChooser(shareIntent, "Share via"));
                 break;
             case R.id.rate:
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(""));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=app.cave.newsapi"));
                 startActivity(intent);
                 break;
             case R.id.moreapp:

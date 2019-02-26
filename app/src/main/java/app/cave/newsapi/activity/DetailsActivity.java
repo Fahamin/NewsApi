@@ -15,6 +15,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +45,9 @@ public class DetailsActivity extends AppCompatActivity
     List<String> API_LIST = new ArrayList<>();
     List<Article> articleList = new ArrayList<>();
     ApiService apiService;
+    private AdView mAdView;
+    private InterstitialAd mInterstitialAd;
+    int c = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,15 @@ public class DetailsActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        MobileAds.initialize(this, getString(R.string.appID));
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(getString(R.string.instarial_full_screen));
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         recyclerView = findViewById(R.id.recyclerView);
         swipeRefreshLayout = findViewById(R.id.refreshLayout);
@@ -133,6 +151,29 @@ public class DetailsActivity extends AppCompatActivity
         });
     }
 
+
+    void addShow() {
+        c++;
+        if (c % 3 == 0) {
+            mInterstitialAd = new InterstitialAd(this);
+            mInterstitialAd.setAdUnitId(getString(R.string.instarial_full_screen));
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mInterstitialAd.loadAd(adRequest);
+
+            mInterstitialAd.setAdListener(new AdListener() {
+                public void onAdLoaded() {
+                    loadADD();
+                }
+            });
+        }
+    }
+
+    void loadADD() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        }
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -141,68 +182,64 @@ public class DetailsActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             Load(API_LIST.get(0));
+            addShow();
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
             Load(API_LIST.get(10));
+            addShow();
 
         } else if (id == R.id.nav_slideshow) {
             Load(API_LIST.get(5));
+            addShow();
         } else if (id == R.id.nav_manage) {
 
             Load(API_LIST.get(2));
-        }
-        else if (id == R.id.cnnID) {
+            addShow();
+        } else if (id == R.id.cnnID) {
             Load(API_LIST.get(10));
+            addShow();
 
-        }
-        else if (id == R.id.cryptoID) {
+        } else if (id == R.id.cryptoID) {
             Load(API_LIST.get(11));
+            addShow();
 
-        }
-        else if (id == R.id.dailymailID) {
+        } else if (id == R.id.dailymailID) {
             Load(API_LIST.get(12));
+            addShow();
 
-        }
-        else if (id == R.id.espnID) {
+        } else if (id == R.id.espnID) {
             Load(API_LIST.get(13));
+            addShow();
 
-        }
-        else if (id == R.id.foxID) {
+        } else if (id == R.id.foxID) {
             Load(API_LIST.get(3));
+            addShow();
 
-        }
-        else if (id == R.id.gurdianID) {
+        } else if (id == R.id.gurdianID) {
             Load(API_LIST.get(9));
+            addShow();
 
-        }
-        else if (id == R.id.neyworktimeID) {
+        } else if (id == R.id.neyworktimeID) {
             Load(API_LIST.get(19));
+            addShow();
 
-        }
-        else if (id == R.id.wasintonPost) {
+        } else if (id == R.id.wasintonPost) {
             Load(API_LIST.get(7));
+            addShow();
 
-        }
-        else if (id == R.id.usaToday) {
+        } else if (id == R.id.usaToday) {
             Load(API_LIST.get(6));
+            addShow();
 
-        }
-        else if (id == R.id.newMagineID) {
+        } else if (id == R.id.newMagineID) {
             Load(API_LIST.get(18));
-
-        }
-        else if (id == R.id.wallStreet) {
+            addShow();
+        } else if (id == R.id.wallStreet) {
             Load(API_LIST.get(8));
+            addShow();
+        } else if (id == R.id.foxID) {
 
-        }
-        else if (id == R.id.foxID) {
-
-        }
-
-
-
-
-        else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share) {
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Install now");
@@ -224,6 +261,7 @@ public class DetailsActivity extends AppCompatActivity
 
     @Override
     public void itemCick(int position) {
+        addShow();
         startActivity(new Intent(DetailsActivity.this, MainActivity.class)
                 .putExtra("article", articleList.get(position)));
     }
@@ -255,7 +293,7 @@ public class DetailsActivity extends AppCompatActivity
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Install now");
-            String app_url = "";
+            String app_url = "https://play.google.com/store/apps/details?id=app.cave.newsapi";
             shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, app_url);
             startActivity(Intent.createChooser(shareIntent, "Share via"));
             return true;

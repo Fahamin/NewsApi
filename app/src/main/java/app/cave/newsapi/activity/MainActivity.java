@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import app.cave.newsapi.R;
 import app.cave.newsapi.model.Article;
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     TextView detailsTextView;
     TextView viewMore;
     private Article article;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +37,17 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        MobileAds.initialize(this, getString(R.string.appID));
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         initViews();
         initObjects();
         setData();
+
 
     }
     private void initViews() {

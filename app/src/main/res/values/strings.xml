@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Us News Live</string>
 
+    <string name="appID">ca-app-pub-4726525166301004~5360934245</string>
+    <string name="instarial_full_screen">ca-app-pub-4726525166301004/2333894779</string>
+    <string name="banner_ad_unit_id">ca-app-pub-4726525166301004/5524585779</string>
+
+
     <string name="header_text">NewsViews</string>
     <string name="sample">Sample</string>
     <string name="newsviews">NewsViews</string>
