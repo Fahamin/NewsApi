@@ -3,13 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:weightSum="16.5"
     android:layout_height="match_parent"
     tools:context=".activity.web">
-<LinearLayout
-    android:orientation="vertical"
-    android:weightSum="16.5"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_weight="15.2"
         android:orientation="vertical"
@@ -47,5 +44,4 @@
         </com.google.android.gms.ads.AdView>
 
     </LinearLayout>
-</LinearLayout>
 </LinearLayout>

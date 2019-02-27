@@ -72,7 +72,7 @@ public class DetailsActivity extends AppCompatActivity
         initApiList();
 
         loadNews();
-
+        swipeRefreshLayout.setRefreshing(true);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -243,7 +243,7 @@ public class DetailsActivity extends AppCompatActivity
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Install now");
-            String app_url = "";
+            String app_url = "https://play.google.com/store/apps/details?id=app.cave.newsapi";
             shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, app_url);
             startActivity(Intent.createChooser(shareIntent, "Share via"));
             return true;
