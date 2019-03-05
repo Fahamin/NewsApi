@@ -70,9 +70,9 @@ public class DetailsActivity extends AppCompatActivity
         recyclerView = findViewById(R.id.recyclerView);
         swipeRefreshLayout = findViewById(R.id.refreshLayout);
         initApiList();
-
+ swipeRefreshLayout.setRefreshing(true);
         loadNews();
-        swipeRefreshLayout.setRefreshing(true);
+      
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

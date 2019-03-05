@@ -1,13 +1,9 @@
 <resources>
-    <string name="app_name">Us News Live</string>
+    <string name="app_name">International News Live </string>
 
  <string name="appID">ca-app-pub-4726525166301004~5360934245</string>
     <string name="instarial_full_screen">ca-app-pub-4726525166301004/2333894779</string>
     <string name="banner_ad_unit_id">ca-app-pub-4726525166301004/5524585779</string>
-
-
-
-
 
 <!--
 
@@ -22,10 +18,11 @@
     <string name="sample">Sample</string>
     <string name="date_time">10-12-2018 "  "T12:10:21</string>
     <string name="view_more">Read More</string>
-    <string name="title_activity_details">US News Live</string>
+    <string name="title_activity_details">International News Live</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">International News</string>
     <string name="nav_header_subtitle">Top Live News of high ranked Newspaper</string>
     <string name="nav_header_desc">Navigation header</string>
+
 </resources>
