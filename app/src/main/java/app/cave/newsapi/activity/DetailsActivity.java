@@ -69,10 +69,12 @@ public class DetailsActivity extends AppCompatActivity
 
         recyclerView = findViewById(R.id.recyclerView);
         swipeRefreshLayout = findViewById(R.id.refreshLayout);
+
         initApiList();
- swipeRefreshLayout.setRefreshing(true);
+
+        swipeRefreshLayout.setRefreshing(true);
         loadNews();
-      
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -154,7 +156,7 @@ public class DetailsActivity extends AppCompatActivity
 
     void addShow() {
         c++;
-        if (c % 3 == 0) {
+        if (c % 2 == 0) {
             mInterstitialAd = new InterstitialAd(this);
             mInterstitialAd.setAdUnitId(getString(R.string.instarial_full_screen));
             AdRequest adRequest = new AdRequest.Builder().build();
@@ -262,8 +264,14 @@ public class DetailsActivity extends AppCompatActivity
     @Override
     public void itemCick(int position) {
         addShow();
-        startActivity(new Intent(DetailsActivity.this, MainActivity.class)
-                .putExtra("article", articleList.get(position)));
+        String link = articleList.get(position).getUrl();
+
+     //   String link = article.getUrl();
+        startActivity(new Intent(DetailsActivity.this,web.class).putExtra("url",link));
+
+    /*startActivity(new Intent(DetailsActivity.this, MainActivity.class)
+                .putExtra("article", articleList.get(position)));*/
+
     }
 
     @Override
