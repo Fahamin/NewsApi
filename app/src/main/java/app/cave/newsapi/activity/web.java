@@ -22,11 +22,12 @@ import android.webkit.URLUtil;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+import com.facebook.ads.AdSize;
+import com.facebook.ads.AdView;
+
 
 import app.cave.newsapi.R;
 
@@ -37,7 +38,7 @@ public class web extends AppCompatActivity {
     SwipeRefreshLayout refreshLayout;
     private Activity mActivity;
     private ProgressDialog progressDialog;
-    private AdView mAdView;
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +46,10 @@ public class web extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_web);
 
-        MobileAds.initialize(this, getString(R.string.appID));
-
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        adView = new AdView(this, getString(R.string.fb_banner), AdSize.BANNER_HEIGHT_50);
+        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
+        adContainer.addView(adView);
+        adView.loadAd();
         
         string = getIntent().getStringExtra("url");
 

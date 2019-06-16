@@ -13,13 +13,16 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
+import com.facebook.ads.Ad;
+import com.facebook.ads.AdError;
+import com.facebook.ads.AdSize;
+import com.facebook.ads.AdView;
+import com.facebook.ads.InterstitialAd;
+import com.facebook.ads.InterstitialAdActivity;
+import com.facebook.ads.InterstitialAdListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,15 +42,18 @@ import retrofit2.Response;
 public class DetailsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, ItemClickListener {
 
+    private final String TAG = InterstitialAdActivity.class.getSimpleName();
+
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
 
     List<String> API_LIST = new ArrayList<>();
     List<Article> articleList = new ArrayList<>();
     ApiService apiService;
-    private AdView mAdView;
-    private InterstitialAd mInterstitialAd;
+
     int c = 0;
+    private InterstitialAd interstitial;
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,15 +63,7 @@ public class DetailsActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        MobileAds.initialize(this, getString(R.string.appID));
 
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(getString(R.string.instarial_full_screen));
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         recyclerView = findViewById(R.id.recyclerView);
         swipeRefreshLayout = findViewById(R.id.refreshLayout);
@@ -89,6 +87,13 @@ public class DetailsActivity extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        adView = new AdView(this, getString(R.string.fb_banner), AdSize.BANNER_HEIGHT_50);
+        LinearLayout adContainer = (LinearLayout) findViewById(R.id.banner_container);
+        adContainer.addView(adView);
+        adView.loadAd();
+
     }
 
 
@@ -113,14 +118,27 @@ public class DetailsActivity extends AppCompatActivity
         API_LIST.add(AppConstant.API_18);
         API_LIST.add(AppConstant.API_19);
         API_LIST.add(AppConstant.API_20);
-
+        API_LIST.add(AppConstant.API_21);
+        API_LIST.add(AppConstant.API_22);
+        API_LIST.add(AppConstant.API_23);
+        API_LIST.add(AppConstant.API_24);
+        API_LIST.add(AppConstant.API_25);
+        API_LIST.add(AppConstant.API_26);
+        API_LIST.add(AppConstant.API_27);
+        API_LIST.add(AppConstant.API_28);
+        API_LIST.add(AppConstant.API_29);
+        API_LIST.add(AppConstant.API_30);
+        API_LIST.add(AppConstant.API_31);
+        API_LIST.add(AppConstant.API_32);
+        API_LIST.add(AppConstant.API_33);
+        API_LIST.add(AppConstant.API_34);
     }
 
     private void loadNews() {
 
         apiService = ApiUtils.getService();
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 32; i++) {
             Load(API_LIST.get(i));
         }
 
@@ -157,22 +175,47 @@ public class DetailsActivity extends AppCompatActivity
     void addShow() {
         c++;
         if (c % 2 == 0) {
-            mInterstitialAd = new InterstitialAd(this);
-            mInterstitialAd.setAdUnitId(getString(R.string.instarial_full_screen));
-            AdRequest adRequest = new AdRequest.Builder().build();
-            mInterstitialAd.loadAd(adRequest);
+            interstitial = new com.facebook.ads.InterstitialAd(this, getString(R.string.facebook_interstial));
+            interstitial.setAdListener(new InterstitialAdListener() {
+                @Override
+                public void onInterstitialDisplayed(Ad ad) {
 
-            mInterstitialAd.setAdListener(new AdListener() {
-                public void onAdLoaded() {
-                    loadADD();
+                }
+
+                @Override
+                public void onInterstitialDismissed(Ad ad) {
+
+                }
+
+                @Override
+                public void onError(Ad ad, AdError adError) {
+
+                }
+
+                @Override
+                public void onAdLoaded(Ad ad) {
+                    showInterstitial();
+                }
+
+                @Override
+                public void onAdClicked(Ad ad) {
+
+                }
+
+                @Override
+                public void onLoggingImpression(Ad ad) {
+
                 }
             });
+            interstitial.loadAd();
+
         }
     }
 
-    void loadADD() {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
+    void showInterstitial() {
+        if(interstitial.isAdLoaded())
+        {
+            interstitial.show();
         }
     }
 
@@ -183,11 +226,11 @@ public class DetailsActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            Load(API_LIST.get(0));
+            Load(API_LIST.get(1));
             addShow();
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-            Load(API_LIST.get(10));
+            Load(API_LIST.get(0));
             addShow();
 
         } else if (id == R.id.nav_slideshow) {
@@ -239,9 +282,79 @@ public class DetailsActivity extends AppCompatActivity
         } else if (id == R.id.wallStreet) {
             Load(API_LIST.get(8));
             addShow();
-        } else if (id == R.id.foxID) {
+        }
+        else if(id==R.id.australiaID)
+        {
+            Load(API_LIST.get(20));
+            addShow();
+        }
+        else if(id==R.id.braxilID)
+        {
+            Load(API_LIST.get(21));
+            addShow();
+        }
+        else if(id==R.id.mexicoID)
+        {
+            Load(API_LIST.get(22));
+            addShow();
+        }
+        else if(id==R.id.newzelanID)
+        {
+            Load(API_LIST.get(23));
+            addShow();
+        }
+        else if(id==R.id.rausiaID)
+        {
+            Load(API_LIST.get(24));
+            addShow();
+        }
+        else if(id==R.id.usaID)
+        {
+            Load(API_LIST.get(25));
+            addShow();
+        }
+        else if(id==R.id.chinaID)
+        {
+            Load(API_LIST.get(26));
+            addShow();
+        }
+        else if(id==R.id.uaeID)
+        {
+            Load(API_LIST.get(27));
+            addShow();
+        }
+        else if(id==R.id.egyptID)
+        {
+            Load(API_LIST.get(28));
+            addShow();
+        }
+        else if(id==R.id.southaffircaID)
+        {
+            Load(API_LIST.get(29));
+            addShow();
+        }
+        else if(id==R.id.japanID)
+        {
+            Load(API_LIST.get(30));
+            addShow();
+        }
+        else if(id==R.id.venuzulaID)
+        {
+            Load(API_LIST.get(31));
+            addShow();
+        }
+        else if(id==R.id.turkeyID)
+        {
+            Load(API_LIST.get(32));
+            addShow();
+        }
+        else if(id==R.id.suadiID)
+        {
+            Load(API_LIST.get(33));
+            addShow();
+        }
 
-        } else if (id == R.id.nav_share) {
+        else if (id == R.id.nav_share) {
             Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Install now");

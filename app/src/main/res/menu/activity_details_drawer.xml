@@ -69,6 +69,57 @@
             android:icon="@drawable/browse"
             android:title="Usa Today"></item>
     </group>
+<item android:title="Country News">
+    <menu>
+
+        <item android:icon="@drawable/browse"
+            android:title="Australia"
+            android:id="@+id/australiaID"></item>
+        <item android:icon="@drawable/browse"
+            android:title="USA"
+            android:id="@+id/usaID"></item>
+        <item android:icon="@drawable/browse"
+            android:title="China"
+            android:id="@+id/chinaID"></item>
+        <item android:icon="@drawable/browse"
+            android:title="Brazil"
+            android:id="@+id/braxilID"></item>
+        <item android:icon="@drawable/browse"
+            android:title="MEXICO"
+            android:id="@+id/mexicoID"></item>
+        <item android:icon="@drawable/browse"
+            android:title="NEW Zealand"
+            android:id="@+id/newzelanID"></item>
+        <item android:icon="@drawable/browse"
+            android:title="Russia"
+            android:id="@+id/rausiaID"></item>
+        <item android:icon="@drawable/browse"
+            android:title="UAE"
+            android:id="@+id/uaeID"></item>
+        <item android:icon="@drawable/browse"
+            android:title="EGYPT"
+            android:id="@+id/egyptID"></item>
+        <item android:icon="@drawable/browse"
+            android:title="South Affrica"
+            android:id="@+id/southaffircaID"></item>
+
+        <item android:icon="@drawable/browse"
+            android:title="Turkey"
+            android:id="@+id/turkeyID"></item>
+
+        <item android:icon="@drawable/browse"
+            android:title="Saudi Arabia"
+            android:id="@+id/suadiID"></item>
+
+        <item android:icon="@drawable/browse"
+            android:title="JAPAN"
+            android:id="@+id/japanID"></item>
+        <item android:icon="@drawable/browse"
+            android:title="VENUZUELA"
+            android:id="@+id/venuzulaID"></item>
+
+    </menu>
+</item>
 
     <item android:title="Communicate">
         <menu>

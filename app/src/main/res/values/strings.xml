@@ -1,16 +1,8 @@
 <resources>
     <string name="app_name">International News Live </string>
 
- <string name="appID">ca-app-pub-4726525166301004~5360934245</string>
-    <string name="instarial_full_screen">ca-app-pub-4726525166301004/2333894779</string>
-    <string name="banner_ad_unit_id">ca-app-pub-4726525166301004/5524585779</string>
-
-<!--
-    <string name="appID">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="instarial_full_screen">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
--->
-
+    <string name="fb_banner">375376229752233_375377586418764</string>
+    <string name="facebook_interstial">375376229752233_375376523085537</string>
 
 
     <string name="header_text">NewsViews</string>
