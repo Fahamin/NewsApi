@@ -21,7 +21,6 @@ import com.facebook.ads.AdError;
 import com.facebook.ads.AdSize;
 import com.facebook.ads.AdView;
 import com.facebook.ads.InterstitialAd;
-import com.facebook.ads.InterstitialAdActivity;
 import com.facebook.ads.InterstitialAdListener;
 
 import java.util.ArrayList;
@@ -42,7 +41,6 @@ import retrofit2.Response;
 public class DetailsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, ItemClickListener {
 
-    private final String TAG = InterstitialAdActivity.class.getSimpleName();
 
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -80,6 +78,7 @@ public class DetailsActivity extends AppCompatActivity
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -98,40 +97,41 @@ public class DetailsActivity extends AppCompatActivity
 
 
     private void initApiList() {
-        API_LIST.add(AppConstant.API_1);
-        API_LIST.add(AppConstant.API_2);
-        API_LIST.add(AppConstant.API_3);
-        API_LIST.add(AppConstant.API_4);
-        API_LIST.add(AppConstant.API_5);
-        API_LIST.add(AppConstant.API_6);
-        API_LIST.add(AppConstant.API_7);
-        API_LIST.add(AppConstant.API_8);
-        API_LIST.add(AppConstant.API_9);
-        API_LIST.add(AppConstant.API_10);
-        API_LIST.add(AppConstant.API_11);
-        API_LIST.add(AppConstant.API_12);
-        API_LIST.add(AppConstant.API_13);
-        API_LIST.add(AppConstant.API_14);
-        API_LIST.add(AppConstant.API_15);
-        API_LIST.add(AppConstant.API_16);
-        API_LIST.add(AppConstant.API_17);
-        API_LIST.add(AppConstant.API_18);
-        API_LIST.add(AppConstant.API_19);
-        API_LIST.add(AppConstant.API_20);
-        API_LIST.add(AppConstant.API_21);
-        API_LIST.add(AppConstant.API_22);
-        API_LIST.add(AppConstant.API_23);
-        API_LIST.add(AppConstant.API_24);
-        API_LIST.add(AppConstant.API_25);
-        API_LIST.add(AppConstant.API_26);
-        API_LIST.add(AppConstant.API_27);
-        API_LIST.add(AppConstant.API_28);
-        API_LIST.add(AppConstant.API_29);
-        API_LIST.add(AppConstant.API_30);
-        API_LIST.add(AppConstant.API_31);
-        API_LIST.add(AppConstant.API_32);
-        API_LIST.add(AppConstant.API_33);
-        API_LIST.add(AppConstant.API_34);
+
+        API_LIST.add(AppConstant.INSTANCE.getAPI_1());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_2());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_3());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_4());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_5());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_6());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_7());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_8());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_9());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_10());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_11());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_12());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_13());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_14());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_15());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_16());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_17());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_18());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_19());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_20());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_21());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_22());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_23());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_24());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_25());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_26());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_27());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_28());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_29());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_30());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_31());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_32());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_33());
+        API_LIST.add(AppConstant.INSTANCE.getAPI_34());
     }
 
     private void loadNews() {
@@ -146,7 +146,7 @@ public class DetailsActivity extends AppCompatActivity
 
     private void Load(String url) {
         articleList.clear();
-        apiService.getNewsDetails(url + AppConstant.API_KEY).enqueue(new Callback<GetNewsView>() {
+        apiService.getNewsDetails(url + AppConstant.INSTANCE.getAPI_KEY()).enqueue(new Callback<GetNewsView>() {
             @Override
             public void onResponse(Call<GetNewsView> call, Response<GetNewsView> response) {
                 if (response.isSuccessful()) {
@@ -228,11 +228,6 @@ public class DetailsActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             Load(API_LIST.get(1));
             addShow();
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-            Load(API_LIST.get(0));
-            addShow();
-
         } else if (id == R.id.nav_slideshow) {
             Load(API_LIST.get(5));
             addShow();

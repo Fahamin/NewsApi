@@ -8,10 +8,7 @@
             android:id="@+id/nav_camera"
             android:icon="@drawable/browse"
             android:title="ABC News" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/browse"
-            android:title="AL JAZEERA EN" />
+
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/browse"

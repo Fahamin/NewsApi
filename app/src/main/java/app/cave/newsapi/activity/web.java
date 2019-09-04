@@ -7,9 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Environment;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -27,7 +25,6 @@ import android.widget.Toast;
 
 import com.facebook.ads.AdSize;
 import com.facebook.ads.AdView;
-
 
 import app.cave.newsapi.R;
 
@@ -52,22 +49,6 @@ public class web extends AppCompatActivity {
         adView.loadAd();
         
         string = getIntent().getStringExtra("url");
-
-       /* CountDownTimer c = new CountDownTimer(2000, 0) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                progressDialog = new ProgressDialog(web.this);
-                progressDialog.setMessage("Loading data. Please wait....");
-                progressDialog.setCancelable(false);
-                progressDialog.show();
-            }
-
-            @Override
-            public void onFinish() {
-                progressDialog.dismiss();
-            }
-        };*/
-
 
         wevViewfunction();
         refreshLayout = findViewById(R.id.refreshLayout);
@@ -100,15 +81,6 @@ public class web extends AppCompatActivity {
             @Override
             public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength) {
 
-              /*  mInterstitialAd = new InterstitialAd(MainActivity.this);
-                mInterstitialAd.setAdUnitId(getString(R.string.interstitial_full_screen1));
-                AdRequest adRequest = new AdRequest.Builder().build();
-                mInterstitialAd.loadAd(adRequest);
-                mInterstitialAd.setAdListener(new AdListener() {
-                    public void onAdLoaded() {
-                        showInterstitial();
-                    }
-                });*/
 
                 DownloadManager.Request request = new
                         DownloadManager.Request(Uri.parse(url));
@@ -137,15 +109,6 @@ public class web extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               /* mInterstitialAd = new InterstitialAd(MainActivity.this);
-                mInterstitialAd.setAdUnitId(getString(R.string.interstitial_full_screen1));
-                AdRequest adRequest = new AdRequest.Builder().build();
-                mInterstitialAd.loadAd(adRequest);
-                mInterstitialAd.setAdListener(new AdListener() {
-                    public void onAdLoaded() {
-                        showInterstitial();
-                    }
-                });*/
                 webView.loadUrl(string);
             }
         });
@@ -158,30 +121,23 @@ public class web extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            /*case android.R.id.home:
-                return true;
-*/
+
+
             case R.id.goBack:
-                /*if (mRewardedVideoAd.isLoaded()) {
-                    mRewardedVideoAd.show();
-                }*/
+
                 if (webView.canGoBack()) {
                     webView.goBack();
                 }
                 break;
 
             case R.id.goForward:
-               /* if (mRewardedVideoAd.isLoaded()) {
-                    mRewardedVideoAd.show();
-                }*/
+
                 if (webView.canGoForward()) {
                     webView.goForward();
                 }
                 break;
             case R.id.reload:
-               /* if (mRewardedVideoAd.isLoaded()) {
-                    mRewardedVideoAd.show();
-                }*/
+
                 webView.loadUrl(webView.getUrl().toString());
                 break;
             case R.id.share:
@@ -226,11 +182,7 @@ public class web extends AppCompatActivity {
         }
     }
 
-   /* private void showInterstitial() {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        }
-    }*/
+
 
     private class GoogleClient extends WebChromeClient {
 
